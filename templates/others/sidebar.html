@@ -1,0 +1,42 @@
+<div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="{% url 'dashboard_view' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        {% if user.user_type == 'LIB' or user.user_type == 'ADM' %}
+                         <a class="nav-link" href="{% url 'user_list' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Members
+                        </a>
+                        {% endif %}
+                        <a class="nav-link" href="{% url 'author_listview' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>  <!-- Icon for Authors -->
+                            Authors
+                        </a>
+                        <a class="nav-link" href="{% url 'book_list' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>  <!-- Icon for Books -->
+                            Books
+                        </a>
+                        
+                        <a class="nav-link" href="{% url 'search_wikipedia' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                            Wikipedia
+                        </a>
+                        
+                        <a class="nav-link" href="{% url 'youtube_search' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                            YouTube
+                        </a> 
+                        
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    {{ user.name }}
+                </div>
+            </nav>
+        </div>

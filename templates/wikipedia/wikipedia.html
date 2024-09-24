@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <section class="jumbotron text-center mt-4">
+        <div class="container">
+          <h1 class="jumbotron-heading">Search Wikipedia</h1>
+          <p class="lead text-muted">Get the top twelve results on Wikipedia for your query!</p>
+          <form method="GET">
+          <div class="input-group mb-3">
+              {% csrf_token %}
+              <input type="text" name="q" value="{{ query }}" class="form-control" aria-label="Username">
+          </div>
+          <p>
+            <button type="submit" name="submit" value="search" class="btn btn-primary my-2">Wikipedia Search</button>
+          </p>
+          </form>
+        </div>
+    </section>
+
+
+    
+    <div class="row py-5">
+        {% for result in results %}
+      
+            
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/{{ result.title }}">{{ result.title }}</a>
+                        <p>{{ result.snippet|safe|linebreaksbr }}</p>
+                    </li>
+                </div>
+            </div>
+        </div>
+            
+        {% endfor %}
+ 
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
